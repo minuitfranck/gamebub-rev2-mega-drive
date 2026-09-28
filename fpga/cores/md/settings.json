@@ -1,0 +1,301 @@
+{
+  "settings": [
+    {
+      "id": 0,
+      "label": "Reset",
+      "address": "0x0",
+      "type": "action",
+      "value": "0x1"
+    },
+    {
+      "id": 13,
+      "label": "Save State",
+      "hotkey": "save_state",
+      "address": "0x14",
+      "type": "action",
+      "value": "0x11",
+      "status": {
+        "address": "0x0100",
+        "busy_mask": "0x680",
+        "done_mask": "0x100",
+        "fail_mask": "0x8000",
+        "timeout_ms": 6000,
+        "done_text": "State saved",
+        "fail_text": "Save failed"
+      },
+      "visible_if": {
+        "address": "0x0100",
+        "mask": "0x40"
+      }
+    },
+    {
+      "id": 14,
+      "label": "Load State",
+      "hotkey": "load_state",
+      "address": "0x14",
+      "type": "action",
+      "value": "0x12",
+      "status": {
+        "address": "0x0100",
+        "busy_mask": "0x680",
+        "start_mask": "0x80",
+        "fail_mask": "0x8000",
+        "timeout_ms": 6000,
+        "done_text": "State loaded",
+        "fail_text": "Load failed",
+        "refused_text": "No state in slot"
+      },
+      "visible_if": {
+        "address": "0x0100",
+        "mask": "0x40"
+      }
+    },
+    {
+      "id": 15,
+      "label": "State Slot",
+      "address": "0x18",
+      "mask": "0xFFFFFFFC",
+      "default": 0,
+      "type": "list",
+      "items": [
+        {
+          "label": "1",
+          "value": 0
+        },
+        {
+          "label": "2",
+          "value": 1
+        },
+        {
+          "label": "3",
+          "value": 2
+        },
+        {
+          "label": "4",
+          "value": 3
+        }
+      ],
+      "visible_if": {
+        "address": "0x0100",
+        "mask": "0x40"
+      }
+    },
+    {
+      "id": 1,
+      "label": "Scaling",
+      "address": "0xF1001018",
+      "mask": "0x0",
+      "type": "list",
+      "items": [
+        {
+          "label": "4:3 (TV)",
+          "value": "0x2"
+        },
+        {
+          "label": "Fit",
+          "value": "0x1"
+        },
+        {
+          "label": "1x (integer)",
+          "value": "0x0"
+        },
+        {
+          "label": "Stretch",
+          "value": "0x3"
+        }
+      ],
+      "default": "0x2"
+    },
+    {
+      "id": 12,
+      "label": "Screen Filter",
+      "address": "0xF100101C",
+      "mask": "0x0",
+      "type": "list",
+      "items": [
+        {
+          "label": "Off",
+          "value": "0x0"
+        },
+        {
+          "label": "Smooth",
+          "value": "0x3"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 2,
+      "label": "Region",
+      "address": "0x10",
+      "mask": "0xFFFFFFFC",
+      "type": "list",
+      "items": [
+        {
+          "label": "Auto",
+          "value": "0x0"
+        },
+        {
+          "label": "Japan",
+          "value": "0x1"
+        },
+        {
+          "label": "USA",
+          "value": "0x2"
+        },
+        {
+          "label": "Europe",
+          "value": "0x3"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 3,
+      "label": "Video",
+      "address": "0x10",
+      "mask": "0xFFFFFFF3",
+      "type": "list",
+      "items": [
+        {
+          "label": "From region",
+          "value": "0x0"
+        },
+        {
+          "label": "60 Hz",
+          "value": "0x4"
+        },
+        {
+          "label": "50 Hz",
+          "value": "0x8"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 4,
+      "label": "Pad",
+      "address": "0x10",
+      "mask": "0xFFFFFFEF",
+      "type": "list",
+      "items": [
+        {
+          "label": "6 button",
+          "value": "0x0"
+        },
+        {
+          "label": "3 button",
+          "value": "0x10"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 5,
+      "label": "Buttons",
+      "address": "0x10",
+      "mask": "0xFFFFFF9F",
+      "type": "list",
+      "items": [
+        {
+          "label": "A B C = Y B A",
+          "value": "0x0"
+        },
+        {
+          "label": "A B C = B A X",
+          "value": "0x20"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 6,
+      "label": "Audio Filter",
+      "address": "0x10",
+      "mask": "0xFFFFFE7F",
+      "type": "list",
+      "items": [
+        {
+          "label": "Model 1",
+          "value": "0x0"
+        },
+        {
+          "label": "Model 2",
+          "value": "0x80"
+        },
+        {
+          "label": "Minimal",
+          "value": "0x100"
+        },
+        {
+          "label": "None",
+          "value": "0x180"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 7,
+      "label": "Mono",
+      "address": "0x10",
+      "mask": "0xFFFFFDFF",
+      "type": "checkbox",
+      "value": "0x200",
+      "default": "0x0"
+    },
+    {
+      "id": 8,
+      "label": "Sprite Limit",
+      "address": "0x10",
+      "mask": "0xFFFFEFFF",
+      "type": "list",
+      "items": [
+        {
+          "label": "Normal",
+          "value": "0x0"
+        },
+        {
+          "label": "High",
+          "value": "0x1000"
+        }
+      ],
+      "default": "0x0"
+    },
+    {
+      "id": 9,
+      "label": "CRAM Dots",
+      "address": "0x10",
+      "mask": "0xFFFFDFFF",
+      "type": "checkbox",
+      "value": "0x2000",
+      "default": "0x0"
+    },
+    {
+      "id": 10,
+      "label": "HiFi PCM",
+      "address": "0x10",
+      "mask": "0xFFFFBFFF",
+      "type": "checkbox",
+      "value": "0x4000",
+      "default": "0x0"
+    },
+    {
+      "id": 11,
+      "label": "FM Chip",
+      "address": "0x10",
+      "mask": "0xFFFF7FFF",
+      "type": "list",
+      "items": [
+        {
+          "label": "YM2612",
+          "value": "0x0"
+        },
+        {
+          "label": "YM3438",
+          "value": "0x8000"
+        }
+      ],
+      "default": "0x0"
+    }
+  ]
+}

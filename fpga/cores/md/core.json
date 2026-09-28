@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "id": "minuitfranck.MD",
+    "name": "Mega Drive / Genesis",
+    "author": "minuitfranck",
+    "version": "r2.19",
+    "license": "GPL-3.0-only"
+  },
+  "bitstreams": [
+    { "target": "gamebub_rev2", "filename": "md_rev2.bit" }
+  ],
+  "hardware": {
+    "cartridge_enable": "no"
+  }
+}
