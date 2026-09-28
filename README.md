@@ -6,6 +6,16 @@ Genesis core on the Game Bub's FPGA framework, with save states. Current build: 
 Not affiliated with, endorsed by or supported by Eli Lipsitz or the Game Bub project. The rev4 has its own
 official releases; this core runs on a rev2 with the rev2 community firmware.
 
+## AI disclosure
+
+This port was made with an AI assistant. **Claude** (Anthropic) wrote the Game Bub glue, the changes to the vendored
+core and the save-state engine, the simulation bench, the build scripts and these documents, working from the
+direction of the maintainer, minuitfranck, who chose what to build, ran every build on a rev2 handheld and decided
+what was kept. The vendored MiSTer core, the CPUs and sound chips inside it and keFEAR89's save-state engine were
+written by their authors listed under Credits. Commits made with the assistant carry a `Co-Authored-By: Claude`
+line. Treat the port's own code as reviewed by testing on one handheld and by simulation, not by a second
+engineer.
+
 ## What is in it
 
 - **The MiSTer Genesis core** (`Genesis_MiSTer` @ adc0c42, "Release 20230224"), unchanged where possible. The
@@ -58,7 +68,8 @@ elaborates the Chisel design; `fpga/scripts/build_core.py` builds the Vivado pro
 - Jorge Cwik: FX68K (68000). Daniel Wallner: T80 (Z80). Jose Tejada Gomez: jt12 and jt89 (sound).
 - keFEAR89: the save-state engine.
 - Eli Lipsitz: the Game Bub, its FPGA framework and firmware.
-- minuitfranck, with Claude (Anthropic): the port, its fixes and these notes.
+- minuitfranck (direction, hardware testing) with Claude, Anthropic's AI assistant (code, simulations, notes): the
+  port, its fixes and these documents. See the AI disclosure above.
 
 ## License
 
