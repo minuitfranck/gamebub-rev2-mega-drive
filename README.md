@@ -4,7 +4,7 @@ An FPGA core for the rev2 (vertical) [Game Bub](https://github.com/elipsitz/game
 Genesis core on the Game Bub's FPGA framework, with save states. Current build: **r2.19**.
 
 Not affiliated with, endorsed by or supported by Eli Lipsitz or the Game Bub project. The rev4 has its own
-official releases; this core runs on a rev2 with the rev2 community firmware.
+official releases; this core runs on a rev2 with the rev2 custom firmware.
 
 ## AI disclosure
 
@@ -34,7 +34,7 @@ engineer.
 
 ## Installing on a rev2
 
-Needs a rev2 Game Bub running the rev2 community firmware, which loads cores from the SD card. From the release
+Needs a rev2 Game Bub running the rev2 custom firmware, which loads cores from the SD card. From the release
 package, copy the folder `minuitfranck.MD` (with `md_rev2.bit`, `core.json`, `files.json`, `settings.json`) into
 `cores/` on the card. Games go in `roms/MD/` as `.md`, `.gen` or `.bin`; battery saves are written next to them as
 `.sav`, save states as one `.ss` file per game.
@@ -58,7 +58,7 @@ elaborates the Chisel design; `fpga/scripts/build_core.py` builds the Vivado pro
 
 - A state saved in the middle of a note restarts the note on load: the engine resets the sound chips.
 - After a failed save or load, rare since r2.19, the game can restart from its logo. Under investigation.
-- The picture is 320 x 224 (or 256 x 224) on a 320 x 240 screen; PAL games run at 50 Hz.
+- The 320 x 224 (or 256 x 224) picture is scaled to the 480 x 320 panel; the default Scaling is 4:3 (TV). PAL games run at 50 Hz.
 
 ## Credits
 
