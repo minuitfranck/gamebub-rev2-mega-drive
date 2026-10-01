@@ -4,6 +4,11 @@ Builds of the Mega Drive core for the rev2 Game Bub, newest first. Each build wa
 it was kept. The full working history of the rev2 project, including the tests behind each line here, is in the
 project's changelog.
 
+## r2.20 (29 September 2026)
+- HDMI pins for the production (rev4.1) Game Bub dock: `rev_2.xdc` moves each TMDS lane to the pair the dock reads
+  it from, and the rev2 buffer block matches the dock's polarity. The handheld's own screen does not use these pins;
+  HDMI output is untested until a dock is on hand. Nothing else changed.
+
 ## r2.19 (27 September 2026)
 - Save states work mid-stage. The engine's "VDP memory idle" test compared the VRAM data-transfer request line
   with zero, but that line is a toggle: its level is the parity of the transfers so far. After an odd number of

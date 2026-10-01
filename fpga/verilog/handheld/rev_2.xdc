@@ -149,14 +149,22 @@ set_property -dict { PACKAGE_PIN J3     IOSTANDARD LVCMOS33 } [get_ports { mcu_i
 # USB-C / HDMI
 ########################################
 # Note: D0, D1, D2, CLK +/- are swapped (should be negated)
-set_property -dict { PACKAGE_PIN C17    IOSTANDARD TMDS_33  } [get_ports { hdmi_clk_p     }];
-set_property -dict { PACKAGE_PIN C16    IOSTANDARD TMDS_33  } [get_ports { hdmi_clk_n     }];
-set_property -dict { PACKAGE_PIN A16    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_p[0] }];
-set_property -dict { PACKAGE_PIN A15    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_n[0] }];
-set_property -dict { PACKAGE_PIN B17    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_p[1] }];
-set_property -dict { PACKAGE_PIN B16    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_n[1] }];
-set_property -dict { PACKAGE_PIN A18    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_p[2] }];
-set_property -dict { PACKAGE_PIN B18    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_n[2] }];
+# Lanes for the production dock (rev4.1, 2026-09-28): the dock's plug mirrors the four pairs, as
+# upstream's rev_4.xdc has them since "Reverse rev4 hdmi lines for production dock". The rev2 board
+# itself wires its pairs to the USB-C pins as dock_rev1 expected (clock on B3/B2, data 0 on A10/A11,
+# data 1 on A2/A3, data 2 on B11/B10); the dock wants data 0 on A2/A3, data 1 on A10/A11, data 2 on
+# B3/B2 and the clock on B11/B10, so each lane moves to the pair the dock reads it from; each pair
+# keeps its p pin (the package's N side on this board) and n pin. top.sv's rev2 block gives the p
+# nets the inverted signal, like the rev4's. The dock_rev1 assignment was: clk C17/C16,
+# data 0 A16/A15, data 1 B17/B16, data 2 A18/B18.
+set_property -dict { PACKAGE_PIN A18    IOSTANDARD TMDS_33  } [get_ports { hdmi_clk_p     }];
+set_property -dict { PACKAGE_PIN B18    IOSTANDARD TMDS_33  } [get_ports { hdmi_clk_n     }];
+set_property -dict { PACKAGE_PIN B17    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_p[0] }];
+set_property -dict { PACKAGE_PIN B16    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_n[0] }];
+set_property -dict { PACKAGE_PIN A16    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_p[1] }];
+set_property -dict { PACKAGE_PIN A15    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_n[1] }];
+set_property -dict { PACKAGE_PIN C17    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_p[2] }];
+set_property -dict { PACKAGE_PIN C16    IOSTANDARD TMDS_33  } [get_ports { hdmi_data_n[2] }];
 
 set_property -dict { PACKAGE_PIN F3     IOSTANDARD LVCMOS33 } [get_ports { usb_sbu_1 }];
 set_property -dict { PACKAGE_PIN D3     IOSTANDARD LVCMOS33 } [get_ports { usb_sbu_2 }];

@@ -1,7 +1,7 @@
 # Mega Drive / Genesis core for the Game Bub rev2
 
 An FPGA core for the rev2 (vertical) [Game Bub](https://github.com/elipsitz/gamebub) handheld: the archived MiSTer
-Genesis core on the Game Bub's FPGA framework, with save states. Current build: **r2.19**.
+Genesis core on the Game Bub's FPGA framework, with save states. Current build: **r2.20**.
 
 Not affiliated with, endorsed by or supported by Eli Lipsitz or the Game Bub project. The rev4 has its own
 official releases; this core runs on a rev2 with the rev2 custom firmware.

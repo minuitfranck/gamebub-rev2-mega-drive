@@ -462,10 +462,12 @@ module top_handheld (
     OBUFDS #(.IOSTANDARD("TMDS_33")) obufds_clock (.I(hdmi_tmds_clock  ), .O(hdmi_clk_p    ), .OB(hdmi_clk_n    ));
 `endif
 `ifdef BOARD_REV_2
-    defparam hdmi.INVERT_D0 = 1;
-    defparam hdmi.INVERT_D1 = 1;
-    defparam hdmi.INVERT_D2 = 1;
-    defparam hdmi.INVERT_CLK = 1;
+    // Production dock (2026-09-28): the dock's plug flips every pair, so each p net has to carry
+    // the inverted signal, as the rev4's does below (inverted data on plain buffers). On the rev2
+    // board the nets named p sit on the package's N-side pins (IOBS), so the buffers keep their
+    // swap (O on the n port) and the inversion is left out: O = the signal on the n net, OB = its
+    // inverse on the p net. The dock_rev1 arrangement was this swap with INVERT_* = 1 (the plain
+    // polarity on the p nets); rev_2.xdc moves the lanes to the pairs the dock reads them from.
 
     OBUFDS #(.IOSTANDARD("TMDS_33")) obufds0      (.I(hdmi_tmds_data[0]), .O(hdmi_data_n[0]), .OB(hdmi_data_p[0]));
     OBUFDS #(.IOSTANDARD("TMDS_33")) obufds1      (.I(hdmi_tmds_data[1]), .O(hdmi_data_n[1]), .OB(hdmi_data_p[1]));
